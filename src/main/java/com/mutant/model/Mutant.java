@@ -3,9 +3,6 @@ package com.mutant.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
-
-@Data
 @Document("mutants")
 public class Mutant {
 
@@ -17,4 +14,24 @@ public class Mutant {
 		this.adn = adn;
 		this.isMutant = isMutant;
 	}
+
+	public Mutant() {}
+					
+
+	public String getAdn() {
+		return adn;
+	}
+
+	public void setAdn(String adn) {
+		this.adn = adn;
+	}
+
+	public boolean isMutant() {
+		return isMutant;
+	}
+
+	public void setMutant(boolean isMutant) {
+		this.isMutant = isMutant;
+	}
+	
 }
