@@ -26,24 +26,24 @@ public class MutantController {
 		Mutant mutant;
 		
 		if (code.isEmpty()) {
-			return new ResponseEntity<String>("ADN Vacío", HttpStatus.NO_CONTENT);		
+			return new ResponseEntity<>("ADN Vacío", HttpStatus.NO_CONTENT);		
 		}
 		if (!code.isValid()) {
-			return new ResponseEntity<String>("ADN Inválido", HttpStatus.BAD_REQUEST);		
+			return new ResponseEntity<>("ADN Inválido", HttpStatus.BAD_REQUEST);		
 		}
 		
 		mutant = code.createtMutant(this.mutantService.isMutant(code.getCode()));
 		mutantService.save(mutant);
 		if (mutant.isMutant()){
-			return new ResponseEntity<String>(code.toString() + " ES un mutante", HttpStatus.OK);		
+			return new ResponseEntity<>(code.toString() + " ES un mutante", HttpStatus.OK);		
 		}
-		return new ResponseEntity<String>(code.toString() + " NO ES un mutante", HttpStatus.FORBIDDEN);		
+		return new ResponseEntity<>(code.toString() + " NO ES un mutante", HttpStatus.FORBIDDEN);		
 	}
 	
 	@GetMapping(value="/stats", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<Stat> getStats(){
 		Stat stat = new Stat(this.mutantService.countMutants(),this.mutantService.countHumans());
-		return new ResponseEntity<Stat>(stat, HttpStatus.OK);		
+		return new ResponseEntity<>(stat, HttpStatus.OK);		
 	}
 	
 	
