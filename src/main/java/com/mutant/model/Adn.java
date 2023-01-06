@@ -1,12 +1,13 @@
 package com.mutant.model;
 
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-
 public class Adn {
 
 	private String[] code;
 	
+	public Adn(String[] code) {
+		this.code = code;
+	}
+
 	public String[] getCode() {
 		return code;
 	}
@@ -28,15 +29,13 @@ public class Adn {
 	}
 
 	public boolean isValid() {
-		return (isNitrogenBase() || isValidStructure());
+		return (isNitrogenBase() && isValidStructure());
 	}
 
 	private boolean isNitrogenBase() {
 		//El ADN sólo puede contener las base nitrogenada del ADN sólo pueden ser: A, T, C y G
-		String adn = String.join(",", this.code);
-		Pattern pattern = Pattern.compile("[ATCG]");
-		Matcher matcher = pattern.matcher(adn);
-		return matcher.matches();
+		String adn = String.join(",", this.code).toUpperCase().replace(",", "");
+		return (adn.matches("[ATCG]+"));
 	}
 
 	private boolean isValidStructure() {
