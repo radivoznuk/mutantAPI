@@ -36,4 +36,35 @@ class AdnTest {
 	
 		assertFalse(adn.isValid());
 	}
+	
+	@Test
+	@DisplayName("Es un código de ADN Inválido por no ser N x N")
+	void testIsValid_AdnInvalidoPorNoSerNxN() {		
+		String[] code = {"AAAAGA",
+						"CAGHRH",
+						"TTATGT",
+						"AG",
+						"CCCCTA",
+						"TCACTG"};
+		Adn adn = new Adn(code);
+	
+		assertFalse(adn.isValid());
+	}
+	
+	@Test
+	@DisplayName("Mutante creado FALSE => HUMANO")
+	void testCreateMutante_TRUE() {		
+		String[] code = {"AAAAGA",
+						"CAGCCA",
+						"TTATGT",
+						"AGAAGG",
+						"CCCCTA",
+						"TCACTG"};
+		Mutant mutanteEsperado =  new Mutant(String.join(",", code), false);
+	
+		Adn adn = new Adn(code);
+		Mutant mutante =  adn.createtMutant(false);
+	
+		assertEquals(mutanteEsperado, mutante);
+	}
 }
