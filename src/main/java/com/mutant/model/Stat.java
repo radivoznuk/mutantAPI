@@ -1,5 +1,7 @@
 package com.mutant.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -7,14 +9,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Stat {
 
-	int count_mutant_adn;
-	int count_human_adn;
+	@JsonProperty("Count Mutant ADN")
+	int countMutantAdn;
+	@JsonProperty("Count Human ADN")
+	int countHumanAdn;
+	@JsonProperty("Ratio")
 	float ratio;	
 	
 
 	public Stat(int countMutants, int countHumans) {
-		this.count_mutant_adn = countMutants;
-		this.count_human_adn = countHumans;
-		this.ratio = (countHumans==0 ? 1 : countMutants / countHumans);
+		this.countMutantAdn = countMutants;
+		this.countHumanAdn = countHumans;
+		this.ratio = (countHumans==0 ? 1 : (float)countMutants / (float)countHumans);
 	}
 }
