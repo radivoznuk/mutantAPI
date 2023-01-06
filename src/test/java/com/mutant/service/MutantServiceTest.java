@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class MutantServiceTest {
-	MutantService mutantService;
+	MutantService mutantService = new MutantService();
 
 	@Test
 	@DisplayName("Es MUTANTE si tiene el primer código genético con alguna base nitrogenada repetida")
