@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mutant.model.Adn;
 import com.mutant.model.Mutant;
 import com.mutant.model.Stat;
 import com.mutant.service.MutantService;
-import com.mutant.wrapper.ADNWrapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +25,7 @@ public class MutantController {
 	private Mutant mutant;
 		
 	@PostMapping(value="/mutant/", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<String> isMutant(@NonNull @RequestBody ADNWrapper adnWrapper){
+	public ResponseEntity<String> isMutant(@NonNull @RequestBody Adn adnWrapper){
 		if (adnWrapper.isEmpty()) {
 			return new ResponseEntity<String>("ADN Vacío", HttpStatus.NO_CONTENT);		
 		}
