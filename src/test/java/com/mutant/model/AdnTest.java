@@ -52,7 +52,24 @@ class AdnTest {
 	}
 	
 	@Test
-	@DisplayName("Mutante creado FALSE => HUMANO")
+	@DisplayName("Crea MUTANTE FALSE => HUMANO")
+	void testCreateMutante_FALSE() {		
+		String[] code = {"AAAAGA",
+						"CAGCCA",
+						"TTATGT",
+						"AGAAGG",
+						"CCCCTA",
+						"TCACTG"};
+		Mutant mutanteEsperado =  new Mutant(String.join(",", code), false);
+	
+		Adn adn = new Adn(code);
+		Mutant mutante =  adn.createtMutant(false);
+	
+		assertEquals(mutanteEsperado, mutante);
+	}
+	
+	@Test
+	@DisplayName("Crea MUTANTE TRUE => MUTANT")
 	void testCreateMutante_TRUE() {		
 		String[] code = {"AAAAGA",
 						"CAGCCA",
