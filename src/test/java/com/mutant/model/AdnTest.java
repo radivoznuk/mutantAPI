@@ -11,7 +11,7 @@ class AdnTest {
 	
 	@Test
 	@DisplayName("Es un código de ADN Válido")
-	void testIsValid_CodigoAdnValido() {		
+	void testIsValid_AdnValido() {		
 		String[] code =  {"AAAAGA",
 				"CAGTGC",
 				"TTATGT",
@@ -24,8 +24,8 @@ class AdnTest {
 	}
 	
 	@Test
-	@DisplayName("Es un código de ADN Inválido")
-	void testIsValid_CodigoAdnInvalido() {		
+	@DisplayName("Es un código de ADN Inválido por no contener A, T, C o G")
+	void testIsValid_AdnInvalidoPorBasesNitrogenadasInvalidas() {		
 		String[] code = {"AAAAGA",
 						"CAGHRH",
 						"TTATGT",
