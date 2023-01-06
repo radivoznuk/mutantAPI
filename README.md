@@ -1,7 +1,7 @@
 # mutantAPI
 
 ##Precondiciones para compilar el proyecto
-- Tener intalado Java 11, MongoDB y Maven
+- Tener intalado Java 17, MongoDB y Maven
 
 ##Compilar proyecto
 - Se debe ejecutar mvn clean install
@@ -27,7 +27,8 @@ curl --location --request POST 'http://localhost:8080/mutant' \
 --header 'Content-Type: application/json' \
 --data-raw '{  "adn": ["ATTGGA","CAGTGC","TTATGT","AGACTG","AAGCCA","TCACTG"]}
 
-- MUTANTE INVÁLIDO:
+- MUTANTES INVÁLIDOS:
 curl --location --request POST 'http://localhost:8080/mutant' \
 --header 'Content-Type: application/json' \
 --data-raw '{  "adn": ["PPPPPP","CAGTGC","TTATGT","AGACTG","AAGCCA","TCACTG"]}
+
