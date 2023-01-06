@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class MutantServiceImplTest {
+class MutantServiceTest {
 	MutantService mutantService;
 
 	@Test
 	@DisplayName("Es MUTANTE si tiene el primer código genético con alguna base nitrogenada repetida")
-	void testIsMutante1() {		
+	void testIsMutante_BaseRepetidaPrimerGen() {		
 		String[] adn = {"AAAAGA",
 						"CAGTGC",
 						"TTATGT",
@@ -23,7 +23,7 @@ class MutantServiceImplTest {
 	
 	@Test
 	@DisplayName("Es MUTANTE si tiene el segundo código genético con alguna base nitrogenada repetida")
-	void testIsMutante2() {		
+	void testIsMutante_BaseRepetidaSegundoGen() {		
 		String[] adn = {"CAGTGC",
 						"ATGGGG",
 						"TTATGT",
@@ -36,7 +36,7 @@ class MutantServiceImplTest {
 	
 	@Test
 	@DisplayName("No es MUTANTE si tiene el tercer código genético con alguna base nitrogenada repetida no consecutivas")
-	void testIsMutante3() {		
+	void testIsMutante_BaseRepetidaNoConsecutivaTercerGen() {		
 		String[] adn = {"ATTGGA",
 						"CAGTGC",
 						"TTATGT",
@@ -49,7 +49,7 @@ class MutantServiceImplTest {
 
 	@Test
 	@DisplayName("Es MUTANTE si tiene el cuarto código genético con alguna base nitrogenada repetida")
-	void testIsMutante4() {		
+	void testIsMutante_BaseRepetidaCuartoGen() {		
 		String[] adn = {"CAGTGC",
 						"ATGNGG",
 						"TTATGT",
