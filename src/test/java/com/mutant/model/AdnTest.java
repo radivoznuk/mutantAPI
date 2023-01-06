@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class AdnTest {
 	
-	
 	@Test
 	@DisplayName("Es un código de ADN Válido")
 	void testIsValid_AdnValido() {		
