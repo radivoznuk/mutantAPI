@@ -36,7 +36,6 @@ public class Mutant {
 		this.isMutant = isMutant;
 	}
 
-
 	 @Override
 	    public boolean equals(Object object) {
 	        if (this == object) {
@@ -52,5 +51,4 @@ public class Mutant {
 	        return Objects.equals(this.adn, that.adn)
 	            && Objects.equals(this.isMutant, that.isMutant);
 	    }
-
 }
