@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class MutantService {
+	//MINIMO_EQUAL_NITORGEN_BASE indica cuantas veces se debe repetir la base nitrogenada para ser un ADN de MUTANTE
+	static final int MINIMO_EQUAL_NITORGEN_BASE = 4; 
+	
 	private final MutantRepository mutantRepository;
 
 	public boolean isMutant(String[] adn) {
@@ -30,42 +33,42 @@ public class MutantService {
 	}
 
 	private boolean verifyMutant(int i, int j, String[] adn) {
-		final int countEquals2BeMutant = 4;//se deja una constante que indica cuantos deben ser iguales para ser mutante
-		return (horizontalRepeated(i, j, adn, countEquals2BeMutant) || verticalRepeated(i, j, adn, countEquals2BeMutant) || diagonalRepeated(i, j, adn, countEquals2BeMutant));
+		return (horizontalRepeated(i, j, adn) || verticalRepeated(i, j, adn) || diagonalRepeated(i, j, adn));
 	}
 
-	private boolean verticalRepeated(int i, int j, String[] adn, int countEquals2BeMutant) {
+	private boolean verticalRepeated(int i, int j, String[] adn) {
 		int countEquals = 1;//cantidad repetidos
-		//mientras la fila a analizar mas la cantidad necesaria para ser mutante sea menor al tamaño de filas de la matriz
+		//Mientras la fila a analizar mas la cantidad necesaria para ser mutante sea menor al tamaño de filas de la matriz
 		//y la cantidad de iguales sea menor a la cantidad de iguales necesarios para ser mutante
 		//y el caracter en la posicion (i,j) es igual al caracter en la posicion (i+countEquals,j)
-		while ((i+countEquals2BeMutant<adn.length) && (countEquals < countEquals2BeMutant) && (adn[i].charAt(j)==adn[i+countEquals].charAt(j))) {
+		while ((i+MINIMO_EQUAL_NITORGEN_BASE<adn.length) && (countEquals < MINIMO_EQUAL_NITORGEN_BASE) && (adn[i].charAt(j)==adn[i+countEquals].charAt(j))) {
 			countEquals++;
 		}
-		return (countEquals==countEquals2BeMutant);
+		return (countEquals==MINIMO_EQUAL_NITORGEN_BASE);
 	}
 
-	private boolean horizontalRepeated(int i, int j, String[] adn, int countEquals2BeMutant) {
+	private boolean horizontalRepeated(int i, int j, String[] adn) {
 		int countEquals = 1;//cantidad repetidos
-		//mientras la columna a analizar mas la cantidad necesaria para ser mutante sea menor al tamaño de columnas de la matriz
+		//Mientras la columna a analizar mas la cantidad necesaria para ser mutante sea menor al tamaño de columnas de la matriz
 		//y la cantidad de iguales sea menor a la cantidad de iguales necesarios para ser mutante
 		//y el caracter en la posicion (i,j) es igual al caracter en la posicion (i,j+countEquals)
-		while ((j+countEquals2BeMutant<adn[i].length()) && (countEquals < countEquals2BeMutant) && (adn[i].charAt(j)==adn[i].charAt(j+countEquals))) {
+		while ((j+MINIMO_EQUAL_NITORGEN_BASE<adn[i].length()) && (countEquals < MINIMO_EQUAL_NITORGEN_BASE) && (adn[i].charAt(j)==adn[i].charAt(j+countEquals))) {
 			countEquals++;
 		}
-		return (countEquals==countEquals2BeMutant);
+		return (countEquals==MINIMO_EQUAL_NITORGEN_BASE);
 	}
 
-	private boolean diagonalRepeated(int i, int j, String[] adn, int countEquals2BeMutant) {
+	private boolean diagonalRepeated(int i, int j, String[] adn) {
 		int countEquals = 1;//cantidad repetidos
-		//mientras la columna y fila a analizar mas la cantidad necesaria para ser mutante sean menor al tamaño de columnas de la matriz
+		//Mientras la columna y fila a analizar mas la cantidad necesaria para ser mutante sean menor al tamaño de columnas de la matriz
 		//y la cantidad de iguales sea menor a la cantidad de iguales necesarios para ser mutante
 		//y el caracter en la posicion (i,j) es igual al caracter en la posicion (i+countEquals,j+countEquals)
-		while ((i+countEquals2BeMutant<adn.length) && (j+countEquals2BeMutant<adn[i].length()) && (countEquals < countEquals2BeMutant) && (adn[i].charAt(j)==adn[i+countEquals].charAt(j+countEquals))) {
+		while ((i+MINIMO_EQUAL_NITORGEN_BASE<adn.length) && (j+MINIMO_EQUAL_NITORGEN_BASE<adn[i].length()) && (countEquals < MINIMO_EQUAL_NITORGEN_BASE) && (adn[i].charAt(j)==adn[i+countEquals].charAt(j+countEquals))) {
 			countEquals++;
 		}
-		return (countEquals==countEquals2BeMutant);
+		return (countEquals==MINIMO_EQUAL_NITORGEN_BASE);
 	}
+
 
 	public void save(Mutant mutant) {
 		mutantRepository.save(mutant);
