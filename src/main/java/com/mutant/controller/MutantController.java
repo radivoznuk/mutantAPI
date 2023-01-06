@@ -1,5 +1,6 @@
 package com.mutant.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ import com.mutant.service.MutantService;
 @RestController
 @RequestMapping("/")
 public class MutantController {
-	private final MutantService mutantService = new MutantService();
+	@Autowired
+	public MutantService mutantService;
 		
 	@PostMapping(value="/mutant/", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<String> isMutant(@NonNull @RequestBody Adn code){
@@ -32,7 +34,7 @@ public class MutantController {
 			return new ResponseEntity<>("ADN Inválido", HttpStatus.BAD_REQUEST);		
 		}
 		
-		mutant = code.createtMutant(this.mutantService.isMutant(code.getCode()));
+		mutant = code.createtMutant(mutantService.isMutant(code.getCode()));
 		mutantService.save(mutant);
 		if (mutant.isMutant()){
 			return new ResponseEntity<>(code.toString() + " ES un mutante", HttpStatus.OK);		

@@ -1,5 +1,6 @@
 package com.mutant.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mutant.model.Mutant;
@@ -10,6 +11,7 @@ public class MutantService {
 	//MINIMO_EQUAL_NITORGEN_BASE indica cuantas veces se debe repetir la base nitrogenada para ser un ADN de MUTANTE
 	static final int MINIMO_EQUAL_NITORGEN_BASE = 4; 
 	
+	@Autowired
 	private MutantRepository mutantRepository;
 
 	public boolean isMutant(String[] adn) {
