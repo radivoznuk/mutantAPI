@@ -61,8 +61,8 @@ class MutantServiceTest {
 	}
 	
 	@Test
-	@DisplayName("Es MUTANTE si tiene el cuarto código genético con alguna base nitrogenada repetida")
-	void testIsMutante5() {		
+	@DisplayName("Es MUTANTE si tiene alguna base nitrogenada repetida verticalmente")
+	void BaseRepetidaVerticalmente() {		
 		String[] adn = {"CAGTGC",
 						"ATGNGG",
 						"CTATGT",
@@ -74,8 +74,8 @@ class MutantServiceTest {
 	}
 	
 	@Test
-	@DisplayName("NO Es MUTANTE si tiene el cuarto código genético con alguna base nitrogenada repetida")
-	void testIsMutante6() {		
+	@DisplayName("NO Es MUTANTE si tiene alguna base nitrogenada repetida verticalmente no consecutiva")
+	void testIsMutante_BaseRepetidaVerticalmenteNoConsecutiva() {		
 		String[] adn = {"CAGTGC",
 						"ATGNGG",
 						"CTATCT",
@@ -87,8 +87,8 @@ class MutantServiceTest {
 	}
 	
 	@Test
-	@DisplayName("ES MUTANTE tiene repetido base nitrogenada en DIAGONAL")
-	void testIsMutante7() {		
+	@DisplayName("ES MUTANTE tiene repetida alguna base nitrogenada digonalmente")
+	void testIsMutante_BaseRepetidaDiagonalmente() {		
 		String[] adn = {"ATTGGA",
 						"CAGTGC",
 						"TTATGT",
